@@ -1,6 +1,5 @@
 package com.example.tanphirum.firstapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -17,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.tanphirum.firstapplication.utils.MessageUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -66,11 +67,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
-            Log.d("ImplicitIntents", "Can't handle this intent!");
+            MessageUtils.showToast(this, "ImplicitIntents / Can't handle this intent!");
         }
     }
 
-    public void shareText(Context context, String msg) {
+    public void shareText() {
         ShareCompat.IntentBuilder
                 .from(this)
                 .setType("text/plain")
@@ -134,9 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_grid:
+                openWebsite("https://developer.android.com");
                 Toast.makeText(this, "click grid", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_list:
+                shareText();
                 Toast.makeText(this, "click list", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_settings:
