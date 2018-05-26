@@ -4,4 +4,6 @@
     <string name="enter_a_message">Enter a message</string>
     <string name="send">send</string>
     <string name="sample_message">Sample Message</string>
+    <string name="title_grid">Grid</string>
+    <string name="title_list">list</string>
 </resources>

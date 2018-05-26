@@ -25,14 +25,14 @@
     </LinearLayout>
 
     <LinearLayout
-        app:layout_constraintBottom_toBottomOf="@+id/view_msg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/view_msg">
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/edt_first_name"
