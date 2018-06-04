@@ -6,4 +6,5 @@
     <string name="sample_message">Sample Message</string>
     <string name="title_grid">Grid</string>
     <string name="title_list">list</string>
+    <string name="title_register">Register</string>
 </resources>

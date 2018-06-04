@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void sendMessage(View v) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        Intent intent = new Intent(this, UIKitActivity.class);
         intent.putExtra(EXT_KEY_MSG, mEdtMsg.getText().toString());
         startActivity(intent);
     }
@@ -65,7 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         // Find an activity to hand the intent and start that activity.
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
+            Bundle args = new Bundle();
+            args.putString("key_name_phirum", "Hello phirum");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                startActivity(intent, args);
+            }
         } else {
             MessageUtils.showToast(this, "ImplicitIntents / Can't handle this intent!");
         }
