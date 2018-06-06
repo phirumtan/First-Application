@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void sendMessage(View v) {
         Intent intent = new Intent(this, UIKitActivity.class);
         intent.putExtra(EXT_KEY_MSG, mEdtMsg.getText().toString());
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 
