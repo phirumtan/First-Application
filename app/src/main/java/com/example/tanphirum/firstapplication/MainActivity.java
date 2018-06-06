@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.tanphirum.firstapplication.utils.MessageUtils;
@@ -50,6 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mBtnSend = findViewById(R.id.btn_send);
         mBtnSend.setOnClickListener(this);
+
+        final Switch gender = findViewById(R.id.switch1);
+        gender.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(buttonView.getContext(), "click " + isChecked, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
