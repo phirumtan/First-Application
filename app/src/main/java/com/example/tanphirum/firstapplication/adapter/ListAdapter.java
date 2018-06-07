@@ -40,7 +40,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         return mListItem.size();
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView mImgIcon;
         private TextView mTxtItemName;
@@ -50,6 +50,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
             mImgIcon = itemView.findViewById(R.id.img_icon);
             mTxtItemName = itemView.findViewById(R.id.txt_item_name);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mTxtItemName.setText("click " + mTxtItemName.getText());
         }
     }
 

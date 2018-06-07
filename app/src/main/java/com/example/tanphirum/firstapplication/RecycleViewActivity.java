@@ -2,8 +2,13 @@ package com.example.tanphirum.firstapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.example.tanphirum.firstapplication.adapter.ListAdapter;
 
@@ -27,9 +32,15 @@ public class RecycleViewActivity extends AppCompatActivity {
         adapter = new ListAdapter(this, createList(10));
 
         mRcv.setAdapter(adapter);
-        mRcv.setLayoutManager(new LinearLayoutManager(this));
+        //mRcv.setLayoutManager(new LinearLayoutManager(this));
+        //mRcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
+        //mRcv.setLayoutManager(new GridLayoutManager(this, 3));
 
+        mRcv.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL));
+
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(mRcv);
     }
 
     private LinkedList<String> createList(int amount) {

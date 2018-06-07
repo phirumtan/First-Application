@@ -21,4 +21,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_new_intent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_uikit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UI Kit"
+        app:layout_constraintTop_toBottomOf="@+id/btn_recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </android.support.constraint.ConstraintLayout>

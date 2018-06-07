@@ -6,6 +6,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +22,7 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
     private TextInputLayout mTxtInputUsername, mTxtInputPass, mTxtInputConPass;
     private TextInputEditText mEdtUsername;
     private String mUsername;
-    private TextInputEditText mEdtPassword, mEdtConfirmPass;
+    private TextInputEditText mEdtPassword, mEdtConfirmPass, mEdtPhoneNo;
     private String mPass;
     private String mConfirmPass;
     private Spinner mSpinnerPhone;
@@ -33,9 +35,11 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
         mTxtInputUsername = findViewById(R.id.txtInputUsername);
         mTxtInputPass = findViewById(R.id.txtInputPass);
         mTxtInputConPass = findViewById(R.id.txtInputConfirmPass);
+
         mEdtUsername = findViewById(R.id.edt_username);
         mEdtPassword = findViewById(R.id.edt_pass);
         mEdtConfirmPass = findViewById(R.id.edt_confirm_pass);
+        mEdtPhoneNo = findViewById(R.id.edt_phone);
 
         mSpinnerPhone = findViewById(R.id.sp_phone);
         mSpinnerPhone.setOnItemSelectedListener(this);
@@ -81,6 +85,10 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
                 }
             }
         });
+
+        //PhoneNumberUtils.formatNumber(mEdtPhoneNo.getText(), PhoneNumberUtils.FORMAT_UNKNOWN);
+
+        mEdtPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         /*findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
             @Override
