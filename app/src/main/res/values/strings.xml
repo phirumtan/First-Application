@@ -7,4 +7,6 @@
     <string name="title_grid">Grid</string>
     <string name="title_list">list</string>
     <string name="title_register">Register</string>
+    <string name="intent_new_activity">Intent new activity</string>
+    <string name="recyclerview">Recyclerview</string>
 </resources>

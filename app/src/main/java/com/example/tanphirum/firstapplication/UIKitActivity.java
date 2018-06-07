@@ -46,7 +46,7 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
 
         mSpinnerPhone.setAdapter(adapter);
 
-        /*findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 mUsername = mEdtUsername.getText().toString().trim();
@@ -80,14 +80,14 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
                             .create().show();
                 }
             }
-        });*/
+        });
 
-        findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerFragment().show(getSupportFragmentManager(), "dd");
             }
-        });
+        });*/
     }
 
     private boolean validateView(TextInputEditText v, String value) {

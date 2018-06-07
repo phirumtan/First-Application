@@ -22,7 +22,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         mTxtMsg = findViewById(R.id.txtMsg);
 
         if (getIntent().getExtras() != null) {
-            mTxtMsg.setText(getIntent().getExtras().getString(MainActivity.EXT_KEY_MSG));
+            mTxtMsg.setText(getIntent().getExtras().getString(NewIntentActivity.EXT_KEY_MSG));
         } else {
             mTxtMsg.setText("something wrong with bundle key");
         }
