@@ -9,4 +9,6 @@
     <string name="title_register">Register</string>
     <string name="intent_new_activity">Intent new activity</string>
     <string name="recyclerview">Recyclerview</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

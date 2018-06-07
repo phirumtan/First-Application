@@ -7,15 +7,13 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
-import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.example.tanphirum.firstapplication.fragment.DatePickerFragment;
 
 public class UIKitActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -26,6 +24,7 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
     private String mPass;
     private String mConfirmPass;
     private Spinner mSpinnerPhone;
+    private RadioGroup mRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
         mEdtPassword = findViewById(R.id.edt_pass);
         mEdtConfirmPass = findViewById(R.id.edt_confirm_pass);
         mEdtPhoneNo = findViewById(R.id.edt_phone);
+        mRadioGroup = findViewById(R.id.view_radio_group);
 
         mSpinnerPhone = findViewById(R.id.sp_phone);
         mSpinnerPhone.setOnItemSelectedListener(this);
@@ -96,6 +96,20 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
                 new DatePickerFragment().show(getSupportFragmentManager(), "dd");
             }
         });*/
+
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radio_male:
+                        Toast.makeText(group.getContext(), "male click hey", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_female:
+                        Toast.makeText(group.getContext(), "female click hey", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
 
     private boolean validateView(TextInputEditText v, String value) {
