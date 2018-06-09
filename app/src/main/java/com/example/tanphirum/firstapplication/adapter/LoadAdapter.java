@@ -13,31 +13,45 @@ import com.example.tanphirum.firstapplication.R;
 
 import java.util.LinkedList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
+public class LoadAdapter extends RecyclerView.Adapter {
 
     private LayoutInflater mInflater;
 
     private LinkedList<String> mListItem;
 
-    public ListAdapter(Context context, LinkedList<String> listItem) {
+    private final int VIEW_ITEM = 1;
+    private final int VIEW_PROG = 0;
+
+    public LoadAdapter(Context context, LinkedList<String> listItem) {
         this.mInflater = LayoutInflater.from(context);
         this.mListItem = listItem;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (mListItem.size() > 0 && mListItem.size() - 1 == position) {
+            return VIEW_PROG;
+        }
+        return VIEW_ITEM;
     }
 
     @NonNull
     @Override
-    public ListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(mInflater.inflate(R.layout.layout_list_item, parent, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        RecyclerView.ViewHolder v = null;
+        if (viewType == VIEW_ITEM) {
+            v = new MyViewHolder(mInflater.inflate(R.layout.layout_list_item, parent, false));
+        } else {
+            v = new MyProgressViewHolder(mInflater.inflate(R.layout.layout_progress_bar, parent, false));
+        }
+        return v;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListAdapter.MyViewHolder holder, int position) {
-        holder.mTxtItemName.setText(mListItem.get(position));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof MyViewHolder) {
+            ((MyViewHolder) holder).mTxtItemName.setText(mListItem.get(position));
+        }
     }
 
     @Override
@@ -48,6 +62,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     public void insertItem(String s) {
         mListItem.add(s);
     }
+
+    static class MyProgressViewHolder extends RecyclerView.ViewHolder {
+        public MyProgressViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
 
     static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 

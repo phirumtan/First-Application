@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String LOG_TAG = MainActivity.class.getSimpleName(); // constant tag log message
 
     private Button mBtnNewIntent;
-    private Button mBtnRecyclerView, mBtnUIKit;
+    private Button mBtnRecyclerView, mBtnUIKit, mBtnViewPager, mBtnWebview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +22,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnNewIntent = findViewById(R.id.btn_new_intent);
         mBtnRecyclerView = findViewById(R.id.btn_recyclerview);
         mBtnUIKit = findViewById(R.id.btn_uikit);
+        mBtnViewPager = findViewById(R.id.btn_ui_viewpager);
+        mBtnWebview = findViewById(R.id.btn_webview);
 
         mBtnNewIntent.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnUIKit.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
+        mBtnWebview.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_uikit:
                 intent(v.getContext(), UIKitActivity.class);
                 break;
+            case R.id.btn_ui_viewpager:
+                intent(v.getContext(), ViewPagerActivity.class);
+                break;
+            case R.id.btn_webview:
+            intent(v.getContext(), WebviewActivity.class);
+            break;
         }
     }
 

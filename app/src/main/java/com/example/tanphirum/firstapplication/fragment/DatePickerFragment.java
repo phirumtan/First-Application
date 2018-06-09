@@ -2,7 +2,6 @@ package com.example.tanphirum.firstapplication.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;

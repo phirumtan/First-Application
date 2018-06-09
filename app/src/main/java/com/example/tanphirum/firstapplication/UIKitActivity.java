@@ -15,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tanphirum.firstapplication.fragment.TimePickerFragment;
+
 public class UIKitActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private TextInputLayout mTxtInputUsername, mTxtInputPass, mTxtInputConPass;
@@ -90,12 +92,12 @@ public class UIKitActivity extends AppCompatActivity implements AdapterView.OnIt
 
         mEdtPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-        /*findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerFragment().show(getSupportFragmentManager(), "dd");
+                new TimePickerFragment().show(getSupportFragmentManager(), "TimePick");
             }
-        });*/
+        });
 
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
