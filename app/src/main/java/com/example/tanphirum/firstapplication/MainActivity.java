@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String LOG_TAG = MainActivity.class.getSimpleName(); // constant tag log message
 
     private Button mBtnNewIntent;
-    private Button mBtnRecyclerView, mBtnUIKit, mBtnViewPager, mBtnWebview;
+    private Button mBtnRecyclerView, mBtnUIKit, mBtnViewPager, mBtnWebview, mBtnAsync;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnUIKit = findViewById(R.id.btn_uikit);
         mBtnViewPager = findViewById(R.id.btn_ui_viewpager);
         mBtnWebview = findViewById(R.id.btn_webview);
+        mBtnAsync = findViewById(R.id.btn_asyn);
+
 
         mBtnNewIntent.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnUIKit.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
         mBtnWebview.setOnClickListener(this);
+        mBtnAsync.setOnClickListener(this);
+        findViewById(R.id.btn_asyn_loader).setOnClickListener(this);
+        findViewById(R.id.btn_retrofit).setOnClickListener(this);
+        findViewById(R.id.btn_broadcast).setOnClickListener(this);
+        findViewById(R.id.btn_notification).setOnClickListener(this);
+        findViewById(R.id.btn_shared_preference).setOnClickListener(this);
     }
 
     @Override
@@ -48,8 +56,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent(v.getContext(), ViewPagerActivity.class);
                 break;
             case R.id.btn_webview:
-            intent(v.getContext(), WebviewActivity.class);
-            break;
+                intent(v.getContext(), WebviewActivity.class);
+                break;
+            case R.id.btn_asyn:
+                intent(v.getContext(), AsyncTaskActivity.class);
+                break;
+            case R.id.btn_asyn_loader:
+                intent(v.getContext(), AsyncTaskLoaderActivity.class);
+                break;
+            case R.id.btn_retrofit:
+                intent(v.getContext(), Retrofit2Activity.class);
+                break;
+            case R.id.btn_broadcast:
+                intent(v.getContext(), BroadcastActivity.class);
+                break;
+            case R.id.btn_notification:
+                intent(v.getContext(), NotificationActivity.class);
+                break;
+            case R.id.btn_shared_preference:
+                intent(v.getContext(), SharedPreferenceActivity.class);
+                break;
         }
     }
 

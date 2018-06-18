@@ -4,30 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewPagerActivity">
+    tools:context=".AsyncTaskLoaderActivity">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_simple_view_pager"
+    <EditText
+        android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simple ViewPager"
+        android:hint="username"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_custom_view_pager"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_get_data"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="custom ViewPager"
+        android:text="get data"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_simple_view_pager" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
 
-    <FrameLayout
-        app:layout_constraintTop_toBottomOf="@+id/btn_custom_view_pager"
-        android:id="@+id/container"
+    <include
+        android:visibility="gone"
+        android:id="@+id/view_progress"
+        android:background="#80000000"
+        layout="@layout/layout_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 </android.support.constraint.ConstraintLayout>
