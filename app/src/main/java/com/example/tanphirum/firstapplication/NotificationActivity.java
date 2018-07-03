@@ -121,7 +121,7 @@ public class NotificationActivity extends AppCompatActivity {
                 (this, NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT);
 
         //Builds the notification with all of the parameters
-        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, "Chanel_id")
+        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, "news")
                 .setContentTitle(getString(R.string.notification_title))
                 .setContentText(getString(R.string.notification_text))
                 .setSmallIcon(R.drawable.ic_android)

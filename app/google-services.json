@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "549941741011",
+    "firebase_url": "https://buoyant-apogee-810.firebaseio.com",
+    "project_id": "buoyant-apogee-810"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549941741011:android:052dd21395aa2ae3",
+        "android_client_info": {
+          "package_name": "com.example.tanphirum.firstapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549941741011-q3dqmp8uu3383auf8182hcd5k8tdeus2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tanphirum.firstapplication",
+            "certificate_hash": "5365a33ec4b152527a11b8775380dcf38fba3441"
+          }
+        },
+        {
+          "client_id": "549941741011-antlla6eoirdlm6l1r95bpuemjf84m8b.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "549941741011-antlla6eoirdlm6l1r95bpuemjf84m8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4nlrVmoeTxp25te3KwjuZ6HqCyT5ADOM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549941741011-antlla6eoirdlm6l1r95bpuemjf84m8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

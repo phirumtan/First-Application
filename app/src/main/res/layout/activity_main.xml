@@ -1,107 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_new_intent"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/intent_new_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/recyclerview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_new_intent" />
+        <Button
+            android:id="@+id/btn_new_intent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/intent_new_activity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_uikit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="UI Kit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_recyclerview" />
+        <Button
+            android:id="@+id/btn_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/recyclerview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_new_intent" />
 
-    <Button
-        android:id="@+id/btn_ui_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="UI ViewPager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_uikit" />
+        <Button
+            android:id="@+id/btn_uikit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="UI Kit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_recyclerview" />
 
-    <Button
-        android:id="@+id/btn_webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Webview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ui_viewpager" />
+        <Button
+            android:id="@+id/btn_ui_viewpager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="UI ViewPager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_uikit" />
 
-    <Button
-        android:id="@+id/btn_asyn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Async"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_webview" />
+        <Button
+            android:id="@+id/btn_webview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Webview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ui_viewpager" />
 
-    <Button
-        android:id="@+id/btn_asyn_loader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Async Loader"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_asyn" />
+        <Button
+            android:id="@+id/btn_asyn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Async"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_webview" />
 
-    <Button
-        android:id="@+id/btn_retrofit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Retrofit 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_asyn_loader" />
+        <Button
+            android:id="@+id/btn_asyn_loader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Async Loader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_asyn" />
 
-    <Button
-        android:id="@+id/btn_broadcast"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Broadcast"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_retrofit" />
+        <Button
+            android:id="@+id/btn_retrofit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Retrofit 2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_asyn_loader" />
 
-    <Button
-        android:id="@+id/btn_notification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_broadcast" />
+        <Button
+            android:id="@+id/btn_broadcast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Broadcast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_retrofit" />
 
-    <Button
-        android:id="@+id/btn_shared_preference"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Shared Preference"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_notification" />
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_broadcast" />
+
+        <Button
+            android:id="@+id/btn_shared_preference"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Shared Preference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_notification" />
+
+        <Button
+            android:id="@+id/btn_sqlite_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="SQLite Activity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_shared_preference" />
+
+        <Button
+            android:id="@+id/btn_fcm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cloud Messaging"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sqlite_activity" />
+
+        <Button
+            android:id="@+id/btn_ml_kit_qr_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ML Kit QR Scane"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fcm" />
+
+        <Button
+            android:id="@+id/btn_maps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Show maps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ml_kit_qr_code" />
+
+        <Button
+            android:id="@+id/btn_scan_qr_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Scan Qr code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_maps" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -22,6 +22,11 @@ public class LoadAdapter extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private final int VIEW_PROG = 0;
 
+    public LoadAdapter(Context context) {
+        this.mInflater = LayoutInflater.from(context);
+        this.mListItem = new LinkedList<>();
+    }
+
     public LoadAdapter(Context context, LinkedList<String> listItem) {
         this.mInflater = LayoutInflater.from(context);
         this.mListItem = listItem;
@@ -70,7 +75,7 @@ public class LoadAdapter extends RecyclerView.Adapter {
     }
 
 
-    static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView mImgIcon;
         private TextView mTxtItemName;
