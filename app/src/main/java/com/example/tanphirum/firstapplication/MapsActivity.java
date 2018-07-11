@@ -8,6 +8,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +29,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CustomCap;
 import com.google.android.gms.maps.model.Dot;
 import com.google.android.gms.maps.model.Gap;
-import com.google.android.gms.maps.model.JointType;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -38,7 +38,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.maps.model.RoundCap;
 import com.google.gson.Gson;
 import com.google.maps.DirectionsApi;
 import com.google.maps.DirectionsApiRequest;
@@ -52,6 +51,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.BindView;
+
 public class MapsActivity extends AppCompatActivity
         implements
         GoogleMap.OnMarkerClickListener,
@@ -61,6 +62,15 @@ public class MapsActivity extends AppCompatActivity
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final String TAG = MapsActivity.class.getSimpleName();
+
+    private static final PatternItem DOT = new Dot();
+    private static final PatternItem GAP = new Gap(20);
+
+    // Create a stroke pattern of a gap followed by a dot.
+    private static final List<PatternItem> PATTERN_POLYLINE_DOTTED = Arrays.asList(GAP, DOT);
+
+    private static final int COLOR_BLACK_ARGB = 0xff000000;
+    private static final int POLYLINE_STROKE_WIDTH_PX = 12;
 
     private static final int LOCATION_UPDATE_MIN_TIME = 2000;
     private static final int LOCATION_UPDATE_MIN_DISTANCE = 10;
@@ -86,6 +96,9 @@ public class MapsActivity extends AppCompatActivity
     private List<Polyline> mListPolyLines;
 
     private LocationManager mLocationManager;
+
+    @BindView(R.id.view_coordinate)
+    CoordinatorLayout mViewCoordinate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,32 +133,6 @@ public class MapsActivity extends AppCompatActivity
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         enableMyLocation();
-    }
-
-    private void addMarkerToMap() {
-        for (LatLng latLng : mListLatLng) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(latLng)
-                    .title("Title " + latLng.latitude)
-                    .snippet("msg " + latLng.latitude)
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_acleda_marker)));
-        }
-    }
-
-    /**
-     * Enables the My Location layer if the fine location permission has been granted.
-     */
-    private void enableMyLocation() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Permission to access the location is missing.
-            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-        } else if (mMap != null) {
-            // Access to the location has been granted to the app.
-            mMap.setMyLocationEnabled(true);
-            getCurrentLocation();
-        }
     }
 
     @Override
@@ -189,14 +176,6 @@ public class MapsActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * Displays a dialog with error message explaining that the location permission is missing.
-     */
-    private void showMissingPermissionError() {
-        PermissionUtils.PermissionDeniedDialog
-                .newInstance(true).show(getSupportFragmentManager(), "dialog");
-    }
-
     @Override
     public boolean onMarkerClick(final Marker marker) {
 
@@ -210,7 +189,6 @@ public class MapsActivity extends AppCompatActivity
 
         DirectionsApiRequest req = DirectionsApi.getDirections(context, mCurrent.toString(), mDis.toString())
                 .optimizeWaypoints(true).alternatives(true).mode(TravelMode.WALKING);
-
 
         /*final List<LatLng> path = new ArrayList();
         try {
@@ -266,6 +244,7 @@ public class MapsActivity extends AppCompatActivity
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mMyCurrentLocation, 6));*/
+
         //async call
         req.setCallback(new PendingResult.Callback<DirectionsResult>() {
             @Override
@@ -330,8 +309,6 @@ public class MapsActivity extends AppCompatActivity
                             mListPolyLines.add(startPoly);
                             mListPolyLines.add(endPoly);
                         }
-
-
                     }
                 });
 
@@ -339,7 +316,7 @@ public class MapsActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Throwable e) {
-
+                Toast.makeText(MapsActivity.this, "error :" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -394,46 +371,39 @@ public class MapsActivity extends AppCompatActivity
         return false;
     }
 
-    /**
-     * Styles the polyline, based on type.
-     *
-     * @param polyline The polyline object that needs styling.
-     */
-    private void stylePolyline(Polyline polyline) {
-        String type = "";
-        // Get the data object stored with the polyline.
-        if (polyline.getTag() != null) {
-            type = polyline.getTag().toString();
+    private void addMarkerToMap() {
+        for (LatLng latLng : mListLatLng) {
+            mMap.addMarker(new MarkerOptions()
+                    .position(latLng)
+                    .title("Title " + latLng.latitude)
+                    .snippet("msg " + latLng.latitude)
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_acleda_marker)));
         }
-
-        switch (type) {
-            // If no type is given, allow the API to use the default.
-            case "A":
-                // Use a custom bitmap as the cap at the start of the line.
-                polyline.setStartCap(
-                        new CustomCap(
-                                BitmapDescriptorFactory.fromResource(R.drawable.ic_android), 10));
-                break;
-            case "B":
-                // Use a round cap at the start of the line.
-                polyline.setStartCap(new RoundCap());
-                break;
-        }
-
-        polyline.setEndCap(new RoundCap());
-        polyline.setWidth(POLYLINE_STROKE_WIDTH_PX);
-        polyline.setColor(COLOR_BLACK_ARGB);
-        polyline.setJointType(JointType.ROUND);
     }
 
-    private static final PatternItem DOT = new Dot();
-    private static final PatternItem GAP = new Gap(20);
+    /**
+     * Enables the My Location layer if the fine location permission has been granted.
+     */
+    private void enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission to access the location is missing.
+            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
+                    Manifest.permission.ACCESS_FINE_LOCATION, true);
+        } else if (mMap != null) {
+            // Access to the location has been granted to the app.
+            mMap.setMyLocationEnabled(true);
+            getCurrentLocation();
+        }
+    }
 
-    // Create a stroke pattern of a gap followed by a dot.
-    private static final List<PatternItem> PATTERN_POLYLINE_DOTTED = Arrays.asList(GAP, DOT);
-
-    private static final int COLOR_BLACK_ARGB = 0xff000000;
-    private static final int POLYLINE_STROKE_WIDTH_PX = 12;
+    /**
+     * Displays a dialog with error message explaining that the location permission is missing.
+     */
+    private void showMissingPermissionError() {
+        PermissionUtils.PermissionDeniedDialog
+                .newInstance(true).show(getSupportFragmentManager(), "dialog");
+    }
 
     private void getCurrentLocation() {
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -443,8 +413,7 @@ public class MapsActivity extends AppCompatActivity
 
         Location location = null;
         if (!(isGPSEnabled || isNetworkEnabled)) {
-            Toast.makeText(this, "Can't get current location", Toast.LENGTH_SHORT).show();
-            //Snackbar.make(mMapView, R.string.error_location_provider, Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(mViewCoordinate, "Can't get current location", Snackbar.LENGTH_INDEFINITE).show();
         } else {
             if (isNetworkEnabled) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)

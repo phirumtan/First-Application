@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -27,16 +28,26 @@ public class SqliteFragment extends Fragment {
 
     public static final String TAG = SqliteFragment.class.getSimpleName();
 
+    private static final String EXT_KEY_USERNAME = "ext_key_username";
+
     @BindView(R.id.img_profile)
     ImageView mImgProfile;
     @BindView(R.id.container)
     View mContainer;
+
+    @BindView(R.id.edt_username)
+    TextInputEditText mEdtUsername;
 
     private AlertDialog mAlertDialog;
 
     private UserDbRepo mUserDbRepo;
 
     private FragmentManager manager;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -51,6 +62,17 @@ public class SqliteFragment extends Fragment {
         manager = getFragmentManager();
 
         mUserDbRepo = new UserDbRepo(view.getContext());
+
+        if (savedInstanceState != null) {
+            mEdtUsername.setText(savedInstanceState.getString(EXT_KEY_USERNAME));
+        } else
+            mEdtUsername.setText("heloo");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(EXT_KEY_USERNAME, mEdtUsername.getText().toString());
     }
 
     @OnClick({R.id.img_profile, R.id.btn_register})

@@ -7,7 +7,7 @@
     <string name="title_grid">Grid</string>
     <string name="title_list">list</string>
     <string name="title_register">Register</string>
-    <string name="intent_new_activity">Intent new activity</string>
+    <string name="intent_new_activity">បើកសកម្មភាពថ្មី</string>
     <string name="recyclerview">Recyclerview</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -47,8 +47,8 @@
     <string name="title_shared_pref">SharedPreference</string>
     <string name="title_notification">Notification</string>
     <string name="title_sqlite_activity">SQLite Activity</string>
-    <string name="username">Username</string>
-    <string name="password">password</string>
+    <string name="username">ឈ្មោះ​អ្នកប្រើប្រាស់</string>
+    <string name="password">ពាក្យសម្ងាត់</string>
     <string name="phone">phone</string>
     <string name="register">Register</string>
     <string name="delete">Delete</string>

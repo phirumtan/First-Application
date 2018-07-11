@@ -29,7 +29,6 @@
                 android:id="@+id/txt_input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +38,8 @@
                     android:id="@+id/edt_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_khmer_mef_2"
+                    android:hint="@string/username"
                     android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
@@ -122,10 +123,10 @@
         </android.support.constraint.ConstraintLayout>
 
         <FrameLayout
-            android:visibility="gone"
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            android:visibility="gone" />
     </FrameLayout>
 </ScrollView>

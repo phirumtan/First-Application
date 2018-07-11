@@ -1,6 +1,7 @@
 package com.example.tanphirum.firstapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tanphirum.firstapplication.MainActivity;
 import com.example.tanphirum.firstapplication.R;
 import com.example.tanphirum.firstapplication.db.UserDbRepo;
 import com.example.tanphirum.firstapplication.holder.UpdateUserHolder;
@@ -83,9 +85,13 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHold
                         Toast.makeText(v.getContext(), "delete success", Toast.LENGTH_SHORT).show();
                         mListItem.remove(pos);
                         notifyItemRangeRemoved(pos, getItemCount());
-                    } else {
+                    } else
                         Toast.makeText(v.getContext(), "delete fail", Toast.LENGTH_SHORT).show();
-                    }
+                    Datum datum = new Datum();
+                    Intent aaaa = new Intent(v.getContext(), MainActivity.class);
+                    aaaa.putExtra("", datum);
+                    v.getContext().startActivity(aaaa);
+
                     break;
                 case R.id.btn_edit:
                     UserDbRepo dbRepo1 = new UserDbRepo(v.getContext());
